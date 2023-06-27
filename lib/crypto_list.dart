@@ -1,0 +1,37 @@
+import 'package:track_my_crypto/crypto.dart';
+
+class CryptoList {
+  List<Crypto> cryptoList = [
+    Crypto('Ethereum', '(ETH)'),
+    Crypto('Litecoin', '(LTC)'),
+    Crypto('Cardano', '(ADA)'),
+    Crypto('Polkadot', '(DOT)'),
+    Crypto('Bitcoin Cash', '(BCH)'),
+    Crypto('Stellar', '(XLM)'),
+    Crypto('Dogecoin', '(DOGE)'),
+    Crypto('Binance Coin', '(BNB)'),
+    Crypto('Tether', '(USDT)'),
+    Crypto('Monero', '(XMR)'),
+    Crypto('Xrp', '(XRP)'),
+    Crypto('Bitcoin', '(BTC)'),
+    Crypto('USD Coin', '(USDC)'),
+    Crypto('Solana', '(SOL)'),
+    Crypto('Avalanche', '(AVAX)'),
+    Crypto('Terra', '(LUNA)'),
+    Crypto('Binance USD', '(BUSD)'),
+    Crypto('Shiba Inu', '(SHIB)'),
+    Crypto('Polygon', '(MATIC)'),
+    Crypto('Terra USD', '(UST)'),
+    Crypto('Crypto.com Coin', '(CRO)'),
+    Crypto('Wrapped Bitcoin', '(WBTC)'),
+    Crypto('Dai', '(DAI)'),
+    Crypto('Cosmos', '(ATOM)'),
+    Crypto('Chain Link', '(LINK)'),
+    Crypto('NEAR Protocol', '(NEAR)'),
+    Crypto('Uniswap', '(UNI)'),
+    Crypto('Tron', '(TRX)'),
+    Crypto('Ftx Token', '(FTT)'),
+    Crypto('Algorand', '(ALGO)'),
+    Crypto('Decentraland', '(MANA)'),
+  ];
+}
