@@ -14,21 +14,34 @@ class CryptoInfoScreen extends StatelessWidget {
         elevation: 0,
         title: const Text('Data'),
       ),
-      body: Column(
-        children: <Widget>[
-          Row(
-            children: <Widget>[
-              Text(
-                data.name.toString(),
-              ),
-              Text(
-                data.symbol.toString(),
-              ),
-            ],
-          ),
-          Image.asset(data.imagePath),
-          Text(data.description),
-        ],
+      body: Padding(
+        padding: const EdgeInsets.symmetric(horizontal: 30),
+        child: Column(
+          children: <Widget>[
+            const SizedBox(height: 80),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: <Widget>[
+                Text(
+                  data.name.toString(),
+                ),
+                Text(
+                  data.symbol.toString(),
+                ),
+              ],
+            ),
+            const SizedBox(height: 20),
+            Image.asset(
+              data.imagePath,
+              width: 200,
+              height: 200,
+              fit: BoxFit.cover,
+            ),
+            const SizedBox(height: 50),
+            Text(data.description, 
+            textAlign: TextAlign.center),
+          ],
+        ),
       ),
     );
   }
