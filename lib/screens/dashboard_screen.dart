@@ -5,6 +5,15 @@ class DashboardScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Placeholder();
+    return const Scaffold(
+        body: Center(
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: <Widget>[
+          Text('No invest data!'),
+          Text('Please add your invest from the Add tab.'),
+        ],
+      ),
+    ));
   }
 }

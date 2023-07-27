@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:track_my_crypto/screens/add_screen.dart';
+import 'package:track_my_crypto/screens/add_screen/add_screen.dart';
 import 'package:track_my_crypto/screens/dashboard_screen.dart';
 import 'package:track_my_crypto/screens/home_screen.dart';
 import 'package:track_my_crypto/screens/settings_screen.dart';
