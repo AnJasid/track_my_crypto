@@ -46,7 +46,7 @@ class _BottomNavigationState extends State<BottomNavigation> {
             label: 'Dashboard',
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.playlist_add),
+            icon: Icon(Icons.add_box),
             label: 'Add',
           ),
           BottomNavigationBarItem(

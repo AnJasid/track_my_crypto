@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:track_my_crypto/screens/add_screen/models/invest.dart';
+import 'package:track_my_crypto/screens/add_screen/models/invest.dart';
 
 class AddInvestModal extends StatefulWidget {
   const AddInvestModal({
@@ -16,6 +17,7 @@ class AddInvestModal extends StatefulWidget {
 class _AddInvestModalState extends State<AddInvestModal> {
   final _nameController = TextEditingController();
   final _amountController = TextEditingController();
+  DateTime? _selectedDate;
 
   @override
   void dispose() {
@@ -24,8 +26,26 @@ class _AddInvestModalState extends State<AddInvestModal> {
     super.dispose();
   }
 
+  void _presentDatePicker() async {
+    final now = DateTime.now();
+    final firstDate = DateTime(now.year - 1, now.month, now.day);
+    final pickedDate = await showDatePicker(
+      context: context,
+      initialDate: now,
+      firstDate: firstDate,
+      lastDate: now,
+    );
+    setState(() {
+      _selectedDate = pickedDate;
+    });
+  }
+
   void _submitInvestData() {
-    if (_nameController.text.trim().isEmpty) {
+    final enteredAmount = double.tryParse(_amountController.text);
+    final amountIsInvalid = enteredAmount == null || enteredAmount <= 0;
+    if (_nameController.text.trim().isEmpty ||
+        amountIsInvalid ||
+        _selectedDate == null) {
       // show error message
       showDialog(
         context: context,
@@ -47,6 +67,8 @@ class _AddInvestModalState extends State<AddInvestModal> {
     widget.onAddInvest(
       Invest(
         name: _nameController.text,
+        amount: enteredAmount,
+        date: _selectedDate!,
       ),
     );
     Navigator.pop(context);
@@ -80,6 +102,35 @@ class _AddInvestModalState extends State<AddInvestModal> {
               label: Text('Amount'),
               prefixText: '₱ ',
             ),
+          ),
+          Row(
+            children: [
+              const Expanded(
+                child: TextField(
+                  decoration: InputDecoration(
+                    border: InputBorder.none,
+                    hintText: 'Date',
+                  ),
+                ),
+              ),
+              Expanded(
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.end,
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  children: [
+                    Text(
+                      _selectedDate == null
+                          ? 'No date selected'
+                          : formatter.format(_selectedDate!),
+                    ),
+                    IconButton(
+                      onPressed: _presentDatePicker,
+                      icon: const Icon(Icons.calendar_month),
+                    ),
+                  ],
+                ),
+              )
+            ],
           ),
           const SizedBox(height: 20),
           Row(

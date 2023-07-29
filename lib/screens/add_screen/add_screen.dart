@@ -29,12 +29,20 @@ class _AddScreenState extends State<AddScreen> {
 
   @override
   Widget build(BuildContext context) {
+    Widget mainContent = const Center(
+      child: Text('No Crypto investment found. Start adding some!'),
+    );
+
+    if (_registeredInvest.isNotEmpty) {
+      mainContent = InvestList(invest: _registeredInvest);
+    }
+
     return Scaffold(
       appBar: AppBar(
         elevation: 0,
         title: const Text('Investment Logs'),
       ),
-      body: InvestList(invest: _registeredInvest),
+      body: mainContent,
       floatingActionButton: FloatingActionButton(
         elevation: 0,
         onPressed: _showAddInvestOverlay,

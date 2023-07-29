@@ -15,6 +15,12 @@ class InvestItem extends StatelessWidget {
           title: Text(
             investData.name.toString(),
           ),
+          subtitle: Text(
+            investData.formattedDate,
+          ),
+          trailing: Text(
+            '₱${investData.amount.toStringAsFixed(2)}',
+          ),
         ),
       ),
     );
