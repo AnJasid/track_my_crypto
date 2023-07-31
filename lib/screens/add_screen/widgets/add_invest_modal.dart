@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:track_my_crypto/screens/add_screen/models/invest.dart';
-import 'package:track_my_crypto/screens/add_screen/models/invest.dart';
 
 class AddInvestModal extends StatefulWidget {
   const AddInvestModal({
@@ -18,6 +17,7 @@ class _AddInvestModalState extends State<AddInvestModal> {
   final _nameController = TextEditingController();
   final _amountController = TextEditingController();
   DateTime? _selectedDate;
+  Category _selectedCategory = Category.ethereum;
 
   @override
   void dispose() {
@@ -51,7 +51,8 @@ class _AddInvestModalState extends State<AddInvestModal> {
         context: context,
         builder: (ctx) => AlertDialog(
           title: const Text('Invalid Input'),
-          content: const Text('Please make sure a valid name was entered'),
+          content: const Text(
+              'Please check if the entered name, amount, date, and category is valid.'),
           actions: [
             TextButton(
               onPressed: () {
@@ -69,6 +70,7 @@ class _AddInvestModalState extends State<AddInvestModal> {
         name: _nameController.text,
         amount: enteredAmount,
         date: _selectedDate!,
+        category: _selectedCategory,
       ),
     );
     Navigator.pop(context);
@@ -105,13 +107,9 @@ class _AddInvestModalState extends State<AddInvestModal> {
           ),
           Row(
             children: [
-              const Expanded(
-                child: TextField(
-                  decoration: InputDecoration(
-                    border: InputBorder.none,
-                    hintText: 'Date',
-                  ),
-                ),
+              const Text(
+                'Date',
+                style: TextStyle(fontWeight: FontWeight.bold),
               ),
               Expanded(
                 child: Row(
@@ -120,7 +118,7 @@ class _AddInvestModalState extends State<AddInvestModal> {
                   children: [
                     Text(
                       _selectedDate == null
-                          ? 'No date selected'
+                          ? 'Please select a date'
                           : formatter.format(_selectedDate!),
                     ),
                     IconButton(
@@ -130,6 +128,37 @@ class _AddInvestModalState extends State<AddInvestModal> {
                   ],
                 ),
               )
+            ],
+          ),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              const Text(
+                'Category',
+                style: TextStyle(fontWeight: FontWeight.bold),
+              ),
+              DropdownButton(
+                value: _selectedCategory,
+                items: Category.values
+                    .map(
+                      (category) => DropdownMenuItem(
+                        value: category,
+                        child: Text(
+                          category.name.toUpperCase(),
+                          textAlign: TextAlign.center,
+                        ),
+                      ),
+                    )
+                    .toList(),
+                onChanged: (value) {
+                  if (value == null) {
+                    return;
+                  }
+                  setState(() {
+                    _selectedCategory = value;
+                  });
+                },
+              ),
             ],
           ),
           const SizedBox(height: 20),

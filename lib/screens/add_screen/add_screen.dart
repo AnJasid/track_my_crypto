@@ -42,7 +42,12 @@ class _AddScreenState extends State<AddScreen> {
         elevation: 0,
         title: const Text('Investment Logs'),
       ),
-      body: mainContent,
+      body: Column(
+        children: [
+          const SizedBox(height: 25),
+          Expanded(child: mainContent),
+        ],
+      ),
       floatingActionButton: FloatingActionButton(
         elevation: 0,
         onPressed: _showAddInvestOverlay,

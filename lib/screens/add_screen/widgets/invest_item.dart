@@ -8,18 +8,27 @@ class InvestItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 20),
-      child: Card(
-        child: ListTile(
-          title: Text(
-            investData.name.toString(),
-          ),
-          subtitle: Text(
-            investData.formattedDate,
-          ),
-          trailing: Text(
-            '₱${investData.amount.toStringAsFixed(2)}',
+    return GestureDetector(
+      onTap: () {},
+      child: Padding(
+        padding: const EdgeInsets.symmetric(
+          horizontal: 20,
+          vertical: 2,
+        ),
+        child: Card(
+          child: ListTile(
+            leading: ClipRRect(
+              child: categoryImages[investData.category],
+            ),
+            title: Text(
+              investData.name.toString(),
+            ),
+            subtitle: Text(
+              investData.formattedDate,
+            ),
+            trailing: Text(
+              '₱${investData.amount.toStringAsFixed(2)}',
+            ),
           ),
         ),
       ),

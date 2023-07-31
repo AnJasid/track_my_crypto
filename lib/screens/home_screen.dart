@@ -11,7 +11,12 @@ class HomeScreen extends StatelessWidget {
         elevation: 0,
         title: const Text('Crypto'),
       ),
-      body: const CryptoList(),
+      body: const Column(
+        children: [
+          SizedBox(height: 25),
+          Expanded(child: CryptoList()),
+        ],
+      ),
     );
   }
 }

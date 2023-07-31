@@ -20,7 +20,7 @@ class CryptoItem extends StatelessWidget {
 
     return Padding(
       padding: const EdgeInsets.symmetric(
-        horizontal: 10,
+        horizontal: 20,
         vertical: 2,
       ),
       child: GestureDetector(
