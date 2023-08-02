@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:track_my_crypto/components/bottom_navigation.dart';
+import 'package:track_my_crypto/utils/color_resources.dart';
 
 void main() {
   runApp(const MyApp());
@@ -10,9 +11,11 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const MaterialApp(
+    return MaterialApp(
       debugShowCheckedModeBanner: false,
-      home: BottomNavigation(),
+      home: const BottomNavigation(),
+      theme: ThemeData()
+          .copyWith(scaffoldBackgroundColor: ColorResources.backgroundColor),
     );
   }
 }

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 
-final formatter = DateFormat.yMMMd();
+final formatter = DateFormat.yMMMMd();
 
 enum Category {
   ethereum,

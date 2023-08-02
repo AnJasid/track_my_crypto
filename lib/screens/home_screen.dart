@@ -9,14 +9,15 @@ class HomeScreen extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         elevation: 0,
-        title: const Text('Crypto'),
+        title: const Text(
+          'Crypto',
+          style: TextStyle(
+            color: Colors.black,
+          ),
+        ),
+        backgroundColor: Colors.transparent,
       ),
-      body: const Column(
-        children: [
-          SizedBox(height: 25),
-          Expanded(child: CryptoList()),
-        ],
-      ),
+      body: const CryptoList(),
     );
   }
 }

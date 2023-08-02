@@ -5,11 +5,6 @@ class SettingsScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        elevation: 0,
-        title: const Text('Settings'),
-      ),
-    );
+    return const Scaffold();
   }
 }

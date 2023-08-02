@@ -91,75 +91,85 @@ class _AddInvestModalState extends State<AddInvestModal> {
             ),
           ),
           const SizedBox(height: 20),
-          TextField(
-            controller: _nameController,
-            decoration: const InputDecoration(
-              label: Text('Name'),
+          Container(
+            padding: const EdgeInsets.symmetric(horizontal: 20),
+            height: 220,
+            decoration: const BoxDecoration(
+              color: Colors.white70,
             ),
-          ),
-          TextField(
-            controller: _amountController,
-            keyboardType: TextInputType.number,
-            decoration: const InputDecoration(
-              label: Text('Amount'),
-              prefixText: '₱ ',
-            ),
-          ),
-          Row(
-            children: [
-              const Text(
-                'Date',
-                style: TextStyle(fontWeight: FontWeight.bold),
-              ),
-              Expanded(
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.end,
-                  crossAxisAlignment: CrossAxisAlignment.center,
+            child: Column(
+              children: [
+                TextField(
+                  controller: _nameController,
+                  decoration: const InputDecoration(
+                    label: Text('Name'),
+                  ),
+                ),
+                TextField(
+                  controller: _amountController,
+                  keyboardType: TextInputType.number,
+                  decoration: const InputDecoration(
+                    label: Text('Amount'),
+                    prefixText: '₱ ',
+                  ),
+                ),
+                Row(
                   children: [
-                    Text(
-                      _selectedDate == null
-                          ? 'Please select a date'
-                          : formatter.format(_selectedDate!),
+                    const Text(
+                      'Date',
+                      style: TextStyle(fontWeight: FontWeight.bold),
                     ),
-                    IconButton(
-                      onPressed: _presentDatePicker,
-                      icon: const Icon(Icons.calendar_month),
+                    Expanded(
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.end,
+                        crossAxisAlignment: CrossAxisAlignment.center,
+                        children: [
+                          Text(
+                            _selectedDate == null
+                                ? 'Please select a date'
+                                : formatter.format(_selectedDate!),
+                          ),
+                          IconButton(
+                            onPressed: _presentDatePicker,
+                            icon: const Icon(Icons.calendar_month),
+                          ),
+                        ],
+                      ),
+                    )
+                  ],
+                ),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    const Text(
+                      'Category',
+                      style: TextStyle(fontWeight: FontWeight.bold),
+                    ),
+                    DropdownButton(
+                      value: _selectedCategory,
+                      items: Category.values
+                          .map(
+                            (category) => DropdownMenuItem(
+                              value: category,
+                              child: Text(
+                                category.name.toUpperCase(),
+                              ),
+                            ),
+                          )
+                          .toList(),
+                      onChanged: (value) {
+                        if (value == null) {
+                          return;
+                        }
+                        setState(() {
+                          _selectedCategory = value;
+                        });
+                      },
                     ),
                   ],
                 ),
-              )
-            ],
-          ),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              const Text(
-                'Category',
-                style: TextStyle(fontWeight: FontWeight.bold),
-              ),
-              DropdownButton(
-                value: _selectedCategory,
-                items: Category.values
-                    .map(
-                      (category) => DropdownMenuItem(
-                        value: category,
-                        child: Text(
-                          category.name.toUpperCase(),
-                          textAlign: TextAlign.center,
-                        ),
-                      ),
-                    )
-                    .toList(),
-                onChanged: (value) {
-                  if (value == null) {
-                    return;
-                  }
-                  setState(() {
-                    _selectedCategory = value;
-                  });
-                },
-              ),
-            ],
+              ],
+            ),
           ),
           const SizedBox(height: 20),
           Row(

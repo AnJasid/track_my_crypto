@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:track_my_crypto/screens/add_screen/widgets/add_invest_modal.dart';
 import 'package:track_my_crypto/screens/add_screen/widgets/invest_list.dart';
 import 'package:track_my_crypto/screens/add_screen/models/invest.dart';
+import 'package:track_my_crypto/utils/color_resources.dart';
 
 class AddScreen extends StatefulWidget {
   const AddScreen({super.key});
@@ -16,6 +17,7 @@ class _AddScreenState extends State<AddScreen> {
   void _showAddInvestOverlay() {
     showModalBottomSheet(
       isScrollControlled: true,
+      backgroundColor: ColorResources.backgroundColor,
       context: context,
       builder: (ctx) => AddInvestModal(onAddInvest: _addInvest),
     );
@@ -40,14 +42,15 @@ class _AddScreenState extends State<AddScreen> {
     return Scaffold(
       appBar: AppBar(
         elevation: 0,
-        title: const Text('Investment Logs'),
+        title: const Text(
+          'Investment Logs',
+          style: TextStyle(
+            color: Colors.black,
+          ),
+        ),
+        backgroundColor: Colors.transparent,
       ),
-      body: Column(
-        children: [
-          const SizedBox(height: 25),
-          Expanded(child: mainContent),
-        ],
-      ),
+      body: mainContent,
       floatingActionButton: FloatingActionButton(
         elevation: 0,
         onPressed: _showAddInvestOverlay,
