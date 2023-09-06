@@ -29,6 +29,14 @@ class _AddScreenState extends State<AddScreen> {
     });
   }
 
+  double _totalAmount() {
+    double amount = 0;
+    for (final item in _registeredInvest) {
+      amount += item.amount;
+    }
+    return amount;
+  }
+
   @override
   Widget build(BuildContext context) {
     Widget mainContent = const Center(
@@ -42,9 +50,9 @@ class _AddScreenState extends State<AddScreen> {
     return Scaffold(
       appBar: AppBar(
         elevation: 0,
-        title: const Text(
-          'Investment Logs',
-          style: TextStyle(
+        title: Text(
+          _totalAmount().toString(),
+          style: const TextStyle(
             color: Colors.black,
           ),
         ),
